@@ -113,9 +113,9 @@
                         Deleted Product
                     </div>
                         <div class="card-body">
-                            @if (session('delete_status'))
+                            @if (session('restore_status'))
                                 <div class="alert alert-danger">
-                                    {{ session('delete_status') }}
+                                    {{ session('restore_status') }}
                                 </div>
                             @endif
                             <table class="table table-bordered">

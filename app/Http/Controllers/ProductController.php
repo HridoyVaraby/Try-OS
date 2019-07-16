@@ -10,7 +10,8 @@ class ProductController extends Controller
     function addproductview()
     {
         $products = Product::paginate(8);
-        return view('product/view', compact('products'));
+        $deleted_products = Product::onlyTrashed()->get();
+        return view('product/view', compact('products', 'deleted_products'));
     }
 
     function addproductinsert(Request $request)

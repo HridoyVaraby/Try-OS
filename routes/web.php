@@ -11,11 +11,6 @@
 |
 */
 
-Route::get('/', 'FrontendController@index');
-
-Route::get('contact', 'FrontendController@contact');
-
-Route::get('about', 'FrontendController@about');
 
 Auth::routes();
 
@@ -35,4 +30,12 @@ Route::get('/edit/product/{product_id}', 'ProductController@editproduct');
 
 Route::post('/edit/product/insert', 'ProductController@editproductinsert');
 
+// Front-end Route
 
+Route::get('/', 'FrontendController@index');
+
+Route::get('contact', 'FrontendController@contact');
+
+Route::get('about', 'FrontendController@about');
+
+Route::get('/product/details/{product_id}', 'FrontendController@productdetails');

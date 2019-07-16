@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="col-8">
+            <div class="col-8 ">
                 <div class="card">
                     <div class="card-header bg-success">
                         <center>Product List</center>
@@ -85,7 +85,7 @@
                                     <tr>
                                         <th>{{$loop->index + 1}}</th>
                                         <th>{{$product->product_name}}</th>
-                                        <th>{{$product->product_description}}</th>
+                                        <th>{{str_limit($product->product_description, 30)}}</th>
                                         <th>{{$product->product_price}}</th>
                                         <th>{{$product->product_quantity}}</th>
                                         <th>{{$product->alart_quantity}}</th>
@@ -105,6 +105,56 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-8 offset-4 ">
+            
+                <div class="card">
+                    <div class="card-header bg-danger text-center text-light">
+                        Deleted Product
+                    </div>
+                        <div class="card-body">
+                            @if (session('delete_status'))
+                                <div class="alert alert-danger">
+                                    {{ session('delete_status') }}
+                                </div>
+                            @endif
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Product Name</th>
+                                        <th>Product Description</th>
+                                        <th>Product Price</th>
+                                        <th>Product Quantity</th>
+                                        <th>Alart Quantity</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($deleted_products as $product)
+                                        <tr>
+                                            <th>{{$loop->index + 1}}</th>
+                                            <th>{{$product->product_name}}</th>
+                                            <th>{{str_limit($product->product_description, 30)}}</th>
+                                            <th>{{$product->product_price}}</th>
+                                            <th>{{$product->product_quantity}}</th>
+                                            <th>{{$product->alart_quantity}}</th>
+                                            <th class="btn-group">
+                                                <a href="{{ url('/edit/product') }}/{{$product->id}}" class="btn btn-sm btn-info">Edit</a>
+                                                <a href="{{ url('/delete/product') }}/{{$product->id}}" class="btn btn-sm btn-danger">Delete</a>
+                                            </th>
+                                        </tr> 
+                                        @empty
+                                            <tr class="text-center">
+                                                <td colspan="7">No data found.</td>
+                                            </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                                {{ $products->links() }}
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
 @endsection

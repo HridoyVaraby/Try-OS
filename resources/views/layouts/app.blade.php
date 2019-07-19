@@ -37,7 +37,13 @@
                             <a class="nav-link" href="{{ url('/home') }}">Deshboard</a>                        
                         </li>
                         <li class="nav-item">                    
-                            <a class="nav-link" href="{{ url('/add/product/view') }}">Add Product</a>
+                            <a class="nav-link" href="{{ url('/add/product/view') }}">View Product</a>
+                        </li>
+                        <li class="nav-item">                    
+                            <a class="nav-link" href="{{ url('/add/product/add') }}">Add Product</a>
+                        </li>
+                        <li class="nav-item">                    
+                            <a class="nav-link" href="{{ url('/add/product/deleted') }}">Delete Product</a>
                         </li>
                     </ul>
 

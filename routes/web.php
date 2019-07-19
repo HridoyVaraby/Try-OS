@@ -22,6 +22,10 @@ Route::get('/edit/user/{user_id}', 'HomeController@edituser');
 
 Route::get('/add/product/view', 'ProductController@addproductview');
 
+Route::get('/add/product/add', 'ProductController@addproductadd');
+
+Route::get('/add/product/deleted', 'ProductController@addproductdeleted');
+
 Route::post('/add/product/insert', 'ProductController@addproductinsert');
 
 Route::get('/delete/product/{product_id}', 'ProductController@deleteproduct');

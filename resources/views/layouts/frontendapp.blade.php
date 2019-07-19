@@ -37,10 +37,6 @@
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-                            <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
                             @guest
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-user"></i>{{ __('Login') }}</a>
@@ -51,6 +47,10 @@
                                     </li>
                                 @endif
                                 @else
+                                    <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
+                                    <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+                                    <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
+                                    <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             <i class="fa fa-user"></i>{{ Auth::user()->name }} <span class="caret"></span>

@@ -7,7 +7,7 @@
                     <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('home')}}">Deshboard</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">View Product</li>
+                                <li class="breadcrumb-item active" aria-current="page">Delete Product</li>
                             </ol>
                     </nav>
             </div>
@@ -19,8 +19,13 @@
                     </div>
                         <div class="card-body">
                             @if (session('restore_status'))
-                                <div class="alert alert-danger">
+                                <div class="alert alert-success">
                                     {{ session('restore_status') }}
+                                </div>
+                            @endif
+                            @if (session('forcedelete_status'))
+                                <div class="alert alert-danger">
+                                    {{ session('forcedelete_status') }}
                                 </div>
                             @endif
                             <table class="table table-bordered">
@@ -45,8 +50,8 @@
                                             <th>{{$product->product_quantity}}</th>
                                             <th>{{$product->alart_quantity}}</th>
                                             <th class="btn-group">
-                                                <a href="{{ url('/edit/product') }}/{{$product->id}}" class="btn btn-sm btn-info">Restore</a>
-                                                <a href="{{ url('/delete/product') }}/{{$product->id}}" class="btn btn-sm btn-danger">Delete</a>
+                                                <a href="{{ url('/restore/product') }}/{{$product->id}}" class="btn btn-sm btn-info">Restore</a>
+                                                <a href="{{ url('/forcedelete/product') }}/{{$product->id}}" class="btn btn-sm btn-danger">Delete</a>
                                             </th>
                                         </tr> 
                                         @empty
@@ -56,7 +61,7 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                            
+                            {{ $deleted_products->links() }}
                         </div>
                     </div>
             </div>

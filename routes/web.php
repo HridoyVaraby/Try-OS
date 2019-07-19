@@ -30,6 +30,10 @@ Route::post('/add/product/insert', 'ProductController@addproductinsert');
 
 Route::get('/delete/product/{product_id}', 'ProductController@deleteproduct');
 
+Route::get('/forcedelete/product/{product_id}', 'ProductController@forcedeleteproduct');
+
+Route::get('/restore/product/{product_id}', 'ProductController@restoreproduct');
+
 Route::get('/edit/product/{product_id}', 'ProductController@editproduct');
 
 Route::post('/edit/product/insert', 'ProductController@editproductinsert');

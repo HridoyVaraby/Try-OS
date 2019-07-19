@@ -20,7 +20,7 @@ class ProductController extends Controller
 
     function addproductdeleted()
     {
-        $deleted_products = Product::onlyTrashed()->get();
+        $deleted_products = Product::onlyTrashed()->orderby('id','desc')->paginate(8);
         return view('product/deleted', compact('deleted_products'));
     }
 
@@ -48,6 +48,18 @@ class ProductController extends Controller
     {
         Product::find($product_id)->delete();
         return back()->with('delete_status', 'Product Deleted Successfully!');
+    }
+
+    function restoreproduct($product_id)
+    {
+        Product::withTrashed()->find($product_id)->restore();
+        return back()->with('restore_status', 'Product Restore Successfully!');
+    }
+
+    function forcedeleteproduct($product_id)
+    {
+        Product::withTrashed()->find($product_id)->forceDelete();
+        return back()->with('forcedelete_status', 'Product deleted permanently!');
     }
 
     function editproduct($product_id)
